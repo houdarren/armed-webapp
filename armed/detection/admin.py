@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import InputImage
+from .models import OutputImage
+
+
+admin.site.register(InputImage)
+
+admin.site.register(OutputImage)

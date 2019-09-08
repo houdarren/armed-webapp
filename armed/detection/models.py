@@ -1,13 +1,19 @@
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 
-input_fs = FileSystemStorage(location='/media/input')
-output_fs = FileSystemStorage(location='/media/output')
+input_fs = 'images/'
+output_fs = 'images/output/'
 
 class InputImage(models.Model):
-	name = models.CharField(max_length=200)
-	image = models.ImageField(storage=input_fs)
+	name = models.TextField(max_length=255)
+	image = models.ImageField(upload_to=input_fs)
+
+	def __str__(self):
+		return self.name
 
 class OutputImage(models.Model):
-	name = models.CharField(max_length=200)
-	image = models.ImageField(storage=output_fs)
+	name = models.TextField(max_length=255)
+	image = models.ImageField(upload_to=input_fs)
+
+	def __str__(self):
+		return self.name
